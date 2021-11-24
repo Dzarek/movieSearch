@@ -21,7 +21,7 @@ function App() {
     setLoading(false);
   };
 
-  useEffect(() => {
+  useEffect((API) => {
     getData(FEATURED_API);
   }, []);
 
