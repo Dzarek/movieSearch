@@ -6,23 +6,32 @@ import spinner from "./images/spinner.gif";
 
 function App() {
   const SEARCH_API = `${API_URL}search/movie?&api_key=${API_KEY}&query=`;
-  const FEATURED_API = `${API_URL}discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&language=pl-PL&page=1`;
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  const getData = async () => {
-    setLoading(true);
-    const moviesResponse = await fetch(FEATURED_API);
-    const moviesR = await moviesResponse.json();
-    setMovies([...movies, ...moviesR.results]);
-    setCurrentPage(moviesR.page);
-    setLoading(false);
-  };
+  // const getData = async () => {
+  //   setLoading(true);
+  //   const moviesResponse = await fetch(FEATURED_API);
+  //   const moviesR = await moviesResponse.json();
+  //   setMovies([...movies, ...moviesR.results]);
+  //   setCurrentPage(moviesR.page);
+  //   setLoading(false);
+  // };
   useEffect(() => {
+    const FEATURED_API = `${API_URL}discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&language=pl-PL&page=1`;
+
+    const getData = async () => {
+      setLoading(true);
+      const moviesResponse = await fetch(FEATURED_API);
+      const moviesR = await moviesResponse.json();
+      setMovies([...movies, ...moviesR.results]);
+      setCurrentPage(moviesR.page);
+      setLoading(false);
+    };
     getData();
-  }, [getData]);
+  }, []);
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
