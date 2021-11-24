@@ -5,7 +5,6 @@ import { API_KEY, API_URL } from "./Config";
 import spinner from "./images/spinner.gif";
 
 function App() {
-  const FEATURED_API = `${API_URL}discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&language=pl-PL&page=1`;
   const SEARCH_API = `${API_URL}search/movie?&api_key=${API_KEY}&query=`;
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -21,7 +20,8 @@ function App() {
     setLoading(false);
   };
 
-  useEffect((API) => {
+  useEffect(() => {
+    const FEATURED_API = `${API_URL}discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&language=pl-PL&page=1`;
     getData(FEATURED_API);
   }, []);
 
