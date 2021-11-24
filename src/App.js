@@ -12,15 +12,23 @@ function App() {
   const [currentPage, setCurrentPage] = useState(0);
   const [loading, setLoading] = useState(true);
 
+  const getData = async () => {
+    setLoading(true);
+    // const moviesResponse = await fetch(FEATURED_API);
+    // const moviesR = await moviesResponse.json();
+    // setMovies([...movies, ...moviesR.results]);
+    // setCurrentPage(moviesR.page);
+    // setLoading(false);
+
+    fetch(FEATURED_API)
+      .then((res) => res.json())
+      .then((moviesR) => {
+        setMovies([...movies, ...moviesR.results]);
+        setCurrentPage(moviesR.page);
+        setLoading(false);
+      });
+  };
   useEffect(() => {
-    const getData = async () => {
-      setLoading(true);
-      const moviesResponse = await fetch(FEATURED_API);
-      const moviesR = await moviesResponse.json();
-      setMovies([...movies, ...moviesR.results]);
-      setCurrentPage(moviesR.page);
-      setLoading(false);
-    };
     getData();
   }, []);
 
