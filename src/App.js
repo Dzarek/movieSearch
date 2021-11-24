@@ -14,23 +14,15 @@ function App() {
 
   const getData = async () => {
     setLoading(true);
-    // const moviesResponse = await fetch(FEATURED_API);
-    // const moviesR = await moviesResponse.json();
-    // setMovies([...movies, ...moviesR.results]);
-    // setCurrentPage(moviesR.page);
-    // setLoading(false);
-
-    fetch(FEATURED_API)
-      .then((res) => res.json())
-      .then((moviesR) => {
-        setMovies([...movies, ...moviesR.results]);
-        setCurrentPage(moviesR.page);
-        setLoading(false);
-      });
+    const moviesResponse = await fetch(FEATURED_API);
+    const moviesR = await moviesResponse.json();
+    setMovies([...movies, ...moviesR.results]);
+    setCurrentPage(moviesR.page);
+    setLoading(false);
   };
   useEffect(() => {
     getData();
-  }, []);
+  }, [getData]);
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
