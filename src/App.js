@@ -11,6 +11,11 @@ function App() {
   const [currentPage, setCurrentPage] = useState(0);
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const FEATURED_API = `${API_URL}discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&language=pl-PL&page=1`;
+    getData(FEATURED_API);
+  }, []);
+
   const getData = async (API) => {
     setLoading(true);
     const moviesResponse = await fetch(API);
@@ -19,11 +24,6 @@ function App() {
     setCurrentPage(moviesR.page);
     setLoading(false);
   };
-
-  useEffect(() => {
-    const FEATURED_API = `${API_URL}discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&language=pl-PL&page=1`;
-    getData(FEATURED_API);
-  }, []);
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
