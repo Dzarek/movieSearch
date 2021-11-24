@@ -22,7 +22,7 @@ function App() {
     setLoading(false);
   };
 
-  useEffect(() => {
+  useEffect((FEATURED_API) => {
     getData(FEATURED_API);
   }, []);
 
