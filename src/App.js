@@ -4,10 +4,9 @@ import Movie from "./components/Movie";
 import { API_KEY, API_URL } from "./Config";
 import spinner from "./images/spinner.gif";
 
-const FEATURED_API = `${API_URL}discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&language=pl-PL&page=1`;
-const SEARCH_API = `${API_URL}search/movie?&api_key=${API_KEY}&query=`;
-
 function App() {
+  const FEATURED_API = `${API_URL}discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&language=pl-PL&page=1`;
+  const SEARCH_API = `${API_URL}search/movie?&api_key=${API_KEY}&query=`;
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
@@ -22,7 +21,7 @@ function App() {
     setLoading(false);
   };
 
-  useEffect((FEATURED_API) => {
+  useEffect(() => {
     getData(FEATURED_API);
   }, []);
 
