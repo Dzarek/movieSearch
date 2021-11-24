@@ -31,6 +31,7 @@ function App() {
       setLoading(false);
     };
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleOnSubmit = async (e) => {
