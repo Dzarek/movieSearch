@@ -1,38 +1,209 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cantora+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+  background-color: #222;
+  color: white;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  background-color: darkolivegreen;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header div {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+header div h2 {
+  font-family: 'Racing Sans One', cursive, sans-serif;
+  letter-spacing: 3px;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 2px #222;
+}
+
+.search {
+  font-size: 1.2rem;
+  border: 2px solid #222;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  width: 200px;
+}
+
+
+.search:focus {
+  outline: none;
+}
+
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 80vw;
+  margin: 0 auto;
+  padding: 5vh 5vw;
+}
+
+.movie {
+  background-color: rgb(59, 90, 0);
+  border: 1px solid rgb(59, 90, 0);
+  margin: 1rem;
+  width: 300px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+}
+
+@media screen and (orientation: portrait) {
+  header {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+  }
+
+
+  header div h2 {
+    text-align: center;
+    margin: 1rem auto;
+  }
+
+  .search {
+    text-align: center;
+    margin: 1rem auto;
+  }
+
+
+  .movie-container {
+    max-width: 90vw;
+    margin: 0 auto;
+    padding: 5vh 5vw;
+  }
+
+}
+
+
+.movie img {
+  max-width: 100%;
+}
+
+.movie-info {
+  display: flex;
+  padding: 1rem;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+}
+
+.movie-info h3 {
+  margin: 0 auto;
+  font-family: 'Cantora One', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.votesNumber {
+  padding: 10px 0;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 5px 0 5px;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-size: 1.5rem;
+  font-family: 'Racing Sans One', cursive, sans-serif;
+  letter-spacing: 1px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.movie-over {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  color: #222;
+  padding: 1rem;
+  transform: translateY(110%);
+  transition: 0.3s;
+  overflow: auto;
+  max-height: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
+}
+
+.movie-over h2 {
+  color: rgb(59, 90, 0);
+}
+
+.movie:hover .movie-over {
+  transform: translateY(0);
+}
+
+.seeMoreBtn {
+  margin: 10vh auto;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  background: rgb(59, 90, 0);
   color: white;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Racing Sans One', cursive, sans-serif;
+  cursor: pointer;
+  transition: .3s;
+  position: relative;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.App-link {
-  color: #61dafb;
+.seeMoreBtn:hover {
+  background: white;
+  color: rgb(59, 90, 0);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.loader {
+  /* position: relative;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%); */
+  margin: 5vh auto 10vh;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader img {
+  width: 100%;
+}
+
+.loader h2 {
+  font-family: 'Racing Sans One', cursive, sans-serif;
+  margin-top: -10vh;
+  letter-spacing: 2px;
 }
