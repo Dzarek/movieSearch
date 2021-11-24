@@ -1,5 +1,6 @@
 import React from "react";
 import { IMAGE_URL } from "../Config";
+import { BsEyeFill } from "react-icons/bs";
 
 const IMG_API = `${IMAGE_URL}w1280`;
 
@@ -24,6 +25,7 @@ const Movie = ({ title, poster_path, overview, vote_average }) => {
         }
         alt={title}
       />
+      <BsEyeFill className="icon" />
       <span
         className="votesNumber"
         style={{ color: `${setVoteClass(vote_average)}` }}

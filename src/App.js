@@ -5,7 +5,7 @@ import { API_KEY, API_URL } from "./Config";
 import spinner from "./images/spinner.gif";
 
 function App() {
-  const SEARCH_API = `${API_URL}search/movie?&api_key=${API_KEY}&query=`;
+  const SEARCH_API = `${API_URL}search/movie?&api_key=${API_KEY}&language=pl-PL&query=`;
   const FEATURED_API = `${API_URL}discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&language=pl-PL&page=1`;
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -21,16 +21,6 @@ function App() {
     setLoading(false);
   };
   useEffect(() => {
-    // const FEATURED_API = `${API_URL}discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&language=pl-PL&page=1`;
-
-    // const getData = async () => {
-    //   setLoading(true);
-    //   const moviesResponse = await fetch(FEATURED_API);
-    //   const moviesR = await moviesResponse.json();
-    //   setMovies([...movies, ...moviesR.results]);
-    //   setCurrentPage(moviesR.page);
-    //   setLoading(false);
-    // };
     getData(FEATURED_API);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -57,19 +47,10 @@ function App() {
   //   setSearchTerm(e.target.value);
   // };
 
-  // const getData2 = async (API) => {
-  //   setLoading(true);
-  //   const moviesResponse = await fetch(API);
-  //   const moviesR = await moviesResponse.json();
-  //   setMovies([...movies, ...moviesR.results]);
-  //   setCurrentPage(moviesR.page);
-  //   setLoading(false);
-  // };
   const handleClickBtn = () => {
     let endpoint = `${API_URL}discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&language=pl-PL&page=${
       currentPage + 1
     }`;
-    // getData2(endpoint);
     getData(endpoint);
   };
 
