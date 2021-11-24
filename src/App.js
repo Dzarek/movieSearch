@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Movie from "./components/Movie";
 import { API_KEY, API_URL } from "./Config";
 import spinner from "./images/spinner.gif";
+import spinner2 from "./images/spinner2.gif";
 
 function App() {
   const SEARCH_API = `${API_URL}search/movie?&api_key=${API_KEY}&language=pl-PL&query=`;
@@ -57,18 +58,19 @@ function App() {
   return (
     <>
       <header>
+        <img className="loader2" src={spinner} alt="" />
         <div>
           <h2>Wyszukiwarka Filmów</h2>
+          <form onSubmit={handleOnSubmit} action="">
+            <input
+              type="text"
+              placeholder="szukaj..."
+              className="search"
+              value={searchTerm}
+              onChange={handleOnSubmit}
+            />
+          </form>
         </div>
-        <form onSubmit={handleOnSubmit} action="">
-          <input
-            type="text"
-            placeholder="szukaj..."
-            className="search"
-            value={searchTerm}
-            onChange={handleOnSubmit}
-          />
-        </form>
       </header>
 
       <div className="movie-container">
@@ -79,7 +81,7 @@ function App() {
       </div>
       {loading ? (
         <div className="loader">
-          <img className="loader" src={spinner} alt="" />
+          <img className="loader" src={spinner2} alt="" />
           <h2>Wczytywanie...</h2>
         </div>
       ) : (
