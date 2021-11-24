@@ -13,18 +13,16 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const getData = async () => {
+      setLoading(true);
+      const moviesResponse = await fetch(FEATURED_API);
+      const moviesR = await moviesResponse.json();
+      setMovies([...movies, ...moviesR.results]);
+      setCurrentPage(moviesR.page);
+      setLoading(false);
+    };
     getData();
-    // getData(FEATURED_API);
   }, []);
-
-  const getData = async () => {
-    setLoading(true);
-    const moviesResponse = await fetch(FEATURED_API);
-    const moviesR = await moviesResponse.json();
-    setMovies([...movies, ...moviesR.results]);
-    setCurrentPage(moviesR.page);
-    setLoading(false);
-  };
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
