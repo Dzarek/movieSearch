@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { IMAGE_URL } from "../Config";
-import { BsEyeFill } from "react-icons/bs";
+import { FaWindowClose } from "react-icons/fa";
+import { IoEnter } from "react-icons/io5";
+import { GrTextAlignFull } from "react-icons/gr";
+import { Link } from "react-router-dom";
 
-const IMG_API = `${IMAGE_URL}w1280`;
+const IMG_API = `${IMAGE_URL}w500`;
 
 const setVoteClass = (vote) => {
   if (vote >= 8) {
-    return "lightgreen";
+    return "darkgreen";
   } else if (vote >= 6) {
-    return "orange";
+    return "darkorange";
   } else {
     return "darkred";
   }
 };
 
-const Movie = ({ title, poster_path, overview, vote_average }) => {
+const Movie = ({ title, poster_path, overview, vote_average, id }) => {
+  const [showInfo, setShowInfo] = useState(false);
   return (
     <div className="movie">
       <img
@@ -25,7 +29,22 @@ const Movie = ({ title, poster_path, overview, vote_average }) => {
         }
         alt={title}
       />
-      <BsEyeFill className="icon" />
+      <div className="icons">
+        {showInfo ? (
+          <FaWindowClose
+            onClick={() => setShowInfo(!showInfo)}
+            className="icon"
+          />
+        ) : (
+          <GrTextAlignFull
+            onClick={() => setShowInfo(!showInfo)}
+            className="icon"
+          />
+        )}
+        <Link to={`/${id}`} state={{ id: id }}>
+          <IoEnter className="icon" />
+        </Link>
+      </div>
       <span
         className="votesNumber"
         style={{ color: `${setVoteClass(vote_average)}` }}
@@ -35,7 +54,14 @@ const Movie = ({ title, poster_path, overview, vote_average }) => {
       <div className="movie-info">
         <h3>{title}</h3>
       </div>
-      <div className="movie-over">
+      <div
+        className="movie-over"
+        style={
+          showInfo
+            ? { transform: `translateY(0%)` }
+            : { transform: `translateY(110%)` }
+        }
+      >
         <h2>Opis:</h2>
         <p>{overview ? overview : "Brak szczegółów w bazie danych."}</p>
       </div>

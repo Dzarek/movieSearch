@@ -7,10 +7,11 @@ body {
   color: white;
   width: 100vw;
   overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+
 }
 
 header {
-  background-color: rgb(182, 140, 1);
   background-color: rgb(155, 131, 53);
   padding: 1rem;
   display: flex;
@@ -89,16 +90,7 @@ header div h2 {
   position: relative;
 }
 
-.icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2rem;
-  color: white;
-  animation: iconSize 1s infinite alternate;
-  opacity: 0;
-}
+
 
 @keyframes iconSize {
   100% {
@@ -106,7 +98,7 @@ header div h2 {
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (max-width: 800px) {
   header {
     flex-direction: column;
     justify-content: center;
@@ -165,14 +157,14 @@ header div h2 {
 }
 
 .votesNumber {
-  padding: 10px 0;
   width: 20%;
+  height: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0 5px 0 5px;
-  background-color: rgba(0, 0, 0, 0.8);
-  font-size: 1.5rem;
+  border-radius: 0 5px 0 0px;
+  background-color: rgba(255, 255, 255, 1);
+  font-size: 1.8rem;
   font-family: 'Racing Sans One', cursive, sans-serif;
   letter-spacing: 1px;
   position: absolute;
@@ -191,7 +183,7 @@ header div h2 {
   transform: translateY(110%);
   transition: 0.3s;
   overflow: auto;
-  max-height: 100%;
+  max-height: 80%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
@@ -204,9 +196,29 @@ header div h2 {
   color: rgb(182, 140, 1);
 }
 
-.movie:hover .movie-over {
-  transform: translateY(0);
+.icons {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  background: rgba(0, 0, 0, 0.8);
+  width: 80%;
+  height: 10%;
+  border-radius: 0 0 3px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
 }
+
+.icon {
+  margin: 0 1rem;
+  font-size: 1.8rem;
+  color: white;
+  opacity: 1;
+  cursor: pointer;
+
+}
+
 
 .seeMoreBtn {
   margin: 10vh auto;
@@ -249,4 +261,306 @@ header div h2 {
   font-family: 'Racing Sans One', cursive, sans-serif;
   margin-top: -10vh;
   letter-spacing: 2px;
+}
+
+/* single movie */
+.containerSM {
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+}
+
+.headerSM {
+  width: 100vw;
+  height: 70vh;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.headerSM img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.title {
+  position: absolute;
+  bottom: 10%;
+  right: 0%;
+  color: white;
+  font-family: 'Racing Sans One', cursive, sans-serif;
+  text-transform: uppercase;
+  width: 40%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 0 2rem;
+}
+
+.title h2 {
+  letter-spacing: 4px;
+  font-size: 2.5rem;
+}
+
+.title p {
+  text-transform: capitalize;
+  left: 0;
+  font-weight: bold;
+  color: rgb(182, 140, 1);
+  font-size: 1.5rem;
+}
+
+.backToHome {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  font-size: 3rem;
+  color: #fff;
+  transition: .4s;
+  animation: backColor 2s linear infinite alternate;
+}
+
+@keyframes backColor {
+  100% {
+    color: #222;
+  }
+}
+
+.allInfo {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 5vh auto;
+  color: #ddd;
+}
+
+.desc {
+  width: 40%;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.desc h3 {
+  text-align: center;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: rgb(182, 140, 1);
+}
+
+.othersInfo {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 9vh;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+}
+
+.category h3 {
+  margin-right: 2rem;
+  color: rgb(182, 140, 1);
+  font-size: 1.4rem;
+}
+
+.category p {
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category span {
+  margin-right: 1rem;
+}
+
+.votes {
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+.votes div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Racing Sans One', cursive, sans-serif;
+  margin-bottom: -5vh;
+}
+
+.votes div h1 {
+  font-size: 5rem;
+  letter-spacing: 4px;
+}
+
+.starIcon {
+  margin-right: 1rem;
+  font-size: 5rem;
+  color: rgb(182, 140, 1);
+}
+
+.votes p {
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+/* crews */
+.crewsContainer {
+  margin: 0vh auto;
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.oneCrew {
+  width: 250px;
+  height: 350px;
+  border-radius: 5px;
+  margin: 2rem;
+  position: relative;
+  border: 2px solid rgb(182, 140, 1);
+}
+
+.oneCrew img {
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.oneCrew h3 {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px 5px;
+}
+
+@media screen and (max-width: 800px) {
+
+  /* single movie */
+
+  .title {
+    position: absolute;
+    bottom: 0%;
+    right: 50%;
+    transform: translateX(50%);
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .title h2 {
+    letter-spacing: 2px;
+    font-size: 2rem;
+  }
+
+  .allInfo {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5vh auto;
+  }
+
+  .desc {
+    width: 90%;
+  }
+
+
+  .othersInfo {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    margin-top: 9vh;
+    background-color: #ddd;
+    color: #222;
+    padding: 10px;
+  }
+
+  .category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category h3 {
+    margin-right: 0rem;
+    margin: 1rem auto;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .category p {
+    margin-right: 0rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+
+  .votes div h1 {
+    font-size: 3rem;
+    letter-spacing: 3px;
+  }
+
+  .starIcon {
+    margin-right: 1rem;
+    font-size: 3rem;
+  }
+
+  .votes p {
+    font-size: 1.2rem;
+  }
+
+  /* crews */
+  .crewsContainer {
+    margin: 0vh auto;
+    width: 80vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .oneCrew {
+    width: 250px;
+    height: 350px;
+    border-radius: 5px;
+    margin: 2rem;
+    position: relative;
+    border: 2px solid rgb(182, 140, 1);
+  }
+
+  .oneCrew img {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .oneCrew h3 {
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 5px;
+  }
 }
